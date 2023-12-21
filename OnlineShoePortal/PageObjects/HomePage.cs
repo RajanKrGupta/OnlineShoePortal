@@ -10,15 +10,14 @@ namespace OnlineShoePortal.PageObjects
 {
     class HomePage
     {
-
-        public void Click_SignInPortal()
+        private static IWebElement menu_input => PropertiesCollections.driver.FindElement(By.XPath("//input[@type='checkbox']"));
+        private static IWebElement lnkSign => PropertiesCollections.driver.FindElement(By.LinkText("Sign In Portal"));
+        public static void click_SignInPortal()
         {
-            driver.FindElement(By.XPath("//input[@type='checkbox']")).Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-
-            //Thread.Sleep(1000);
+            menu_input.Click();
+            PropertiesCollections.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1); //Thread.Sleep(1000);
             // click on signin button
-            driver.FindElement(By.LinkText("Sign In Portal")).Click();
+            lnkSign.Click();
 
         }
     }

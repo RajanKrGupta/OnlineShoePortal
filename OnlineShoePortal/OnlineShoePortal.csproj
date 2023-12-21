@@ -60,10 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjects\SuccessRegistrationPage.cs" />
     <Compile Include="PageObjects\SignInPage.cs" />
     <Compile Include="PageObjects\RegistrationPage.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="PropertiesCollections.cs" />
+    <Compile Include="Tests\TS02_UserRegistration.cs" />
     <Compile Include="Tests\TS01_UserRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,11 +12,11 @@ using OnlineShoePortal.PageObjects;
 namespace OnlineShoePortal
 {
     [TestClass]
-    public class TS01_UserRegistration
+    public class TS02_UserRegistration
     {
        
          [TestMethod]
-        public void TC01_UserReg_ErrorValidation()
+        public void TC02_UserReg_SuccessfulValidation()
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("-no-sandbox");
@@ -24,44 +24,16 @@ namespace OnlineShoePortal
             PropertiesCollections.driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["url"]);
 
             HomePage.click_SignInPortal();
-
-            Assert.AreEqual(1, SignInPage.txtuserlength);            
-            Assert.AreEqual(1, SignInPage.txtpwdlength);
-            Assert.AreEqual(1, SignInPage.btnLogin);
-            Assert.AreEqual(1, SignInPage.btnRegistration);
-
             SignInPage.clickNewRegistration();
 
-
             RegistrationPage.select_Salutation();
-            RegistrationPage.click_Submit();
-            Assert.AreEqual("This field is required", RegistrationPage.txtErrorMsg);
-
             RegistrationPage.enter_FirstName();
-            RegistrationPage.click_Submit();
-            Assert.AreEqual("This field is required", RegistrationPage.txtErrorMsg);
-
-
             RegistrationPage.enter_LastName();
-            RegistrationPage.click_Submit();
-            Assert.AreEqual("This field is required", RegistrationPage.txtErrorMsg);
-
-            // Invalid Email ID 
-            RegistrationPage.enter_InvalidEmail();
-            RegistrationPage.click_Submit();
-            Assert.AreEqual("Enter a valid email", RegistrationPage.txtErrorMsg);
-
-            // Valid Email ID 
             RegistrationPage.enter_ValidEmail();
-            RegistrationPage.click_Submit();
-            Assert.AreEqual("This field is required", RegistrationPage.txtErrorMsg);
-
             RegistrationPage.enter_UsrName();
-            RegistrationPage.click_Submit();
-            Assert.AreEqual("This field is required", RegistrationPage.txtErrorMsg);
-
             RegistrationPage.enter_Password();
             RegistrationPage.click_Submit();
+            Assert.AreEqual("User Registered Successfully !!!", SuccessRegistrationPage.SuccessMsg);
 
             PropertiesCollections.driver.Close();
             PropertiesCollections.driver.Quit();
